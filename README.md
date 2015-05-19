@@ -18,10 +18,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-
-
-
-func init() {
+func main() {
 	ctx := stash.Set(context.Background(),"something","somethingelse")
 	ctx = stash.Set(ctx,"anotherKey",132.2)
 
