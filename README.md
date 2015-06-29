@@ -6,6 +6,13 @@
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 stash adds generic data to contexts
+## Installation
+
+The import path for the package is *gopkg.in/cogger/stash.v1*.
+
+To install it, run:
+
+    go get gopkg.in/cogger/stash.v1
 
 ## Usage
 ~~~ go
@@ -13,7 +20,7 @@ stash adds generic data to contexts
 package main
 
 import (
-	"github.com/cogger/stash"
+	"gopkg.in/cogger/stash"
 	"golang.org/x/net/context"
 )
 

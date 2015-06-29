@@ -1,4 +1,4 @@
-package stash_test
+package stash
 
 import (
 	. "github.com/onsi/ginkgo"
