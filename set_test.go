@@ -1,9 +1,8 @@
-package stash_test
+package stash
 
 import (
 	"fmt"
 
-	. "github.com/cogger/stash"
 	"golang.org/x/net/context"
 
 	. "github.com/onsi/ginkgo"

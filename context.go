@@ -1,13 +1,31 @@
 package stash
 
-import "golang.org/x/net/context"
+import (
+	"sync"
+
+	"golang.org/x/net/context"
+)
 
 var stashkey = "stash"
 
-func c(ctx context.Context) map[string]interface{} {
-	value, ok := ctx.Value(&stashkey).(*map[string]interface{})
+func c(ctx context.Context) (context.Context, *values) {
+	value, ok := ctx.Value(&stashkey).(*values)
 	if !ok {
-		value = &map[string]interface{}{}
+		value = newValues()
+		ctx = context.WithValue(ctx, &stashkey, value)
 	}
-	return *value
+	return ctx, value
+}
+
+type values struct {
+	sync.RWMutex
+	values map[string]interface{}
+}
+
+func newValues() *values {
+
+	return &values{
+		values: map[string]interface{}{},
+	}
+
 }

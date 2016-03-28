@@ -3,10 +3,14 @@ package stash
 import "golang.org/x/net/context"
 
 func Remove(ctx context.Context, key string) context.Context {
-	values := c(ctx)
-	if _, ok := values[key]; ok {
-		delete(values, key)
+	if !Has(ctx, key) {
+		return ctx
 	}
 
-	return context.WithValue(ctx, &stashkey, &values)
+	ctx, holder := c(ctx)
+	holder.Lock()
+	delete(holder.values, key)
+	holder.Unlock()
+
+	return ctx
 }
